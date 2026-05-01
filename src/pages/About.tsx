@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Smartphone, Activity, GraduationCap, Cpu, Globe, Rocket, Code, Award, CheckCircle2, User } from 'lucide-react';
+import { aboutContent } from '@/content/pages';
 
 export default function About() {
   const experiences = [
@@ -27,7 +28,7 @@ export default function About() {
   return (
     <div className="space-y-16 animate-in fade-in duration-500">
       <header className="max-w-3xl">
-        <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">About Me</h1>
+        <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">{aboutContent.pageTitle}</h1>
         <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
           I bridge the gap between complex telecommunications infrastructure and modern artificial intelligence to build smarter, more efficient mobile networks.
         </p>
@@ -35,20 +36,16 @@ export default function About() {
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         <div className="space-y-6 text-slate-600 dark:text-slate-400">
-          <p>
-            Hello! I'm Fitsum Mergia, a telecommunications professional with over 8 years of experience in Radio Access Network (RAN) optimization. My journey began with a curiosity about how millions of devices connect seamlessly across the globe.
-          </p>
-          <p>
-            Today, my focus is on the next frontier: <strong>AI-driven network operations</strong>. As networks become more virtualized (O-RAN) and complex (5G NR), I believe that the traditional manual approach to network management must evolve into autonomous, self-healing systems.
-          </p>
-          <p>
-            Beyond my corporate role, I am deeply committed to technology education. Through my platform, <strong>EthioTechVibes</strong>, I empower engineers across Africa and beyond with technical skills in telecom, productivity, and automation.
-          </p>
+          {aboutContent.introParagraphs.map((paragraph, index) => (
+            <p key={index}>
+              {paragraph}
+            </p>
+          ))}
         </div>
         
         <div className="relative rounded-3xl overflow-hidden aspect-square md:aspect-auto md:h-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 group shadow-xl flex items-center justify-center">
           <img 
-            src="/fitsum_photo.png" 
+            src="/Fitsum_photo.png" 
             alt="Fitsum Mergia" 
             className="w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700"
             onError={(e) => {
@@ -59,8 +56,8 @@ export default function About() {
           <User size={120} className="text-slate-300 dark:text-slate-800" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent pointer-events-none" />
           <div className="absolute bottom-6 left-6 text-white z-10">
-            <p className="font-display font-bold text-xl">Fitsum Mergia</p>
-            <p className="text-xs opacity-80 uppercase tracking-widest font-bold">RF Expert & Content Creator</p>
+            <p className="font-display font-bold text-xl">{aboutContent.featuredName}</p>
+            <p className="text-xs opacity-80 uppercase tracking-widest font-bold">{aboutContent.featuredTitle}</p>
           </div>
         </div>
       </section>

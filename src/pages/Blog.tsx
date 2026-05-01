@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Hash, ChevronRight, Search, Filter } from 'lucide-react';
-import { posts } from '@/lib/data';
+import { posts } from '@/content/blog';
+import { blogPageContent } from '@/content/pages';
 import { formatDate } from '@/lib/utils';
 
 export default function Blog() {
@@ -20,9 +21,9 @@ export default function Blog() {
   return (
     <div className="space-y-12 animate-in fade-in duration-500">
       <header className="max-w-2xl">
-        <h1 className="text-4xl font-display font-bold mb-4">Blog</h1>
+        <h1 className="text-4xl font-display font-bold mb-4">{blogPageContent.pageTitle}</h1>
         <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-          Technical articles about mobile networks, 5G optimization, AI in telecom, and professional productivity tools.
+          {blogPageContent.description}
         </p>
       </header>
 
@@ -32,7 +33,7 @@ export default function Blog() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-blue transition-colors" size={18} />
           <input 
             type="text" 
-            placeholder="Search articles..." 
+            placeholder={blogPageContent.searchPlaceholder} 
             value={searchQuery}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue transition-all"
@@ -102,12 +103,12 @@ export default function Blog() {
           ))
         ) : (
           <div className="py-20 text-center text-slate-500">
-            <p className="text-lg">No posts found matching your criteria.</p>
+            <p className="text-lg">{blogPageContent.noPostsFound}</p>
             <button 
               onClick={() => {setSearchQuery(''); setSelectedCategory('All');}}
               className="mt-4 text-brand-blue hover:underline"
             >
-              Reset filters
+              {blogPageContent.resetFilters}
             </button>
           </div>
         )}

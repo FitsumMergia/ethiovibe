@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { posts } from '@/lib/data';
+import { posts } from '@/content/blog';
 import { formatDate } from '@/lib/utils';
 import { ChevronLeft, Calendar, Clock, Tag, Share2, Youtube, Linkedin, Twitter } from 'lucide-react';
 

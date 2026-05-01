@@ -17,6 +17,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { layoutContent } from '@/content/pages';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isDarkMode, setIsDarkMode] = React.useState(false);
@@ -43,11 +44,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Sidebar - Desktop */}
       <aside className="hidden md:flex flex-col w-64 h-screen sticky top-0 px-8 py-10 bg-[#f8f3e3] dark:bg-slate-900/40 border-r border-[#e9e2cb] dark:border-white/5">
         <div className="mb-10">
-          <Link to="/" className="flex items-center gap-3 group !border-b-0">
-            <div className="w-8 h-8 rounded bg-slate-900 dark:bg-white flex items-center justify-center text-[#fdf6e3] dark:text-slate-950 font-display font-bold">
-              F
+          <Link to="/" className="flex items-center gap-2 group !border-b-0">
+            <div className="w-10 h-10 rounded overflow-hidden bg-slate-900 dark:bg-white flex items-center justify-center">
+              <img
+                src="/My_photo.jpg"
+                alt="Fitsum logo"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
+              />
             </div>
-            <span className="font-bold text-[19px] group-hover:text-brand-blue transition-colors">Fitsum Mergia</span>
+            <span className="font-brand font-bold text-[19px] leading-tight group-hover:text-brand-blue transition-colors">{layoutContent.brandName}</span>
             <div className="w-2.5 h-2.5 rounded-full bg-brand-blue ml-1 shadow-sm" />
             <button 
               onClick={() => setIsDarkMode(!isDarkMode)}
@@ -61,7 +70,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="mb-10 space-y-4">
           <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 !mt-0 !mb-2">About Me</h3>
           <p className="text-sm text-slate-700 dark:text-slate-400 leading-normal mb-0">
-            I'm <Link to="/about" className="!border-b hover:text-brand-blue">Fitsum</Link>, a telecom engineer and content creator. This is my digital garden. 🌱
+            {layoutContent.sidebarAbout}
           </p>
         </div>
 
@@ -87,7 +96,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400">Stay Connected</h3>
           <div className="space-y-2">
             <Link to="/contact" className="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-blue flex items-center gap-2">
-              <Mail size={14} /> Email Signup
+              <Mail size={14} /> {layoutContent.mobileContact}
             </Link>
             <a href="https://linkedin.com/in/fitsum-mergia-6588176a" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-600 dark:text-slate-400 hover:text-brand-blue flex items-center gap-2">
               <Linkedin size={14} /> LinkedIn
@@ -105,10 +114,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Mobile Nav */}
       <header className="md:hidden flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white font-display font-bold text-lg">
-            FM
+          <div className="w-8 h-8 rounded-lg overflow-hidden bg-brand-blue flex items-center justify-center">
+            <img
+              src="/My_photo.jpg"
+              alt="Fitsum logo"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+              }}
+            />
           </div>
-          <span className="font-display font-bold">Fitsum Mergia</span>
+          <span className="font-display font-bold">{layoutContent.brandName}</span>
         </div>
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

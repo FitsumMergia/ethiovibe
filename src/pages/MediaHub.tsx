@@ -1,6 +1,7 @@
 import React from 'react';
 import { Youtube, Search, Play, ExternalLink, Calendar, Filter } from 'lucide-react';
-import { videoResources } from '@/lib/data';
+import { videoResources } from '@/content/blog';
+import { mediaHubContent } from '@/content/pages';
 
 export default function MediaHub() {
   const [selectedCategory, setSelectedCategory] = React.useState('All');
@@ -11,9 +12,9 @@ export default function MediaHub() {
     <div className="space-y-12 animate-in fade-in duration-500">
       <header className="max-w-3xl flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-display font-bold mb-4">Media Hub</h1>
+          <h1 className="text-4xl font-display font-bold mb-4">{mediaHubContent.pageTitle}</h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-            Educational video content from EthioTechVibes. Mastering telecom concepts through visual storytelling.
+            {mediaHubContent.description}
           </p>
         </div>
         <a 
@@ -22,7 +23,7 @@ export default function MediaHub() {
           rel="noopener noreferrer"
           className="px-6 py-3 bg-red-600 text-white rounded-xl font-bold flex items-center gap-2 hover:bg-red-700 transition-all shrink-0"
         >
-          <Youtube size={20} /> Subscribe on YouTube
+          <Youtube size={20} /> {mediaHubContent.subscribeLabel}
         </a>
       </header>
 
@@ -37,12 +38,12 @@ export default function MediaHub() {
           <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-red-600 transition-all cursor-pointer">
             <Play size={32} fill="currentColor" strokeWidth={0} />
           </div>
-          <span className="uppercase tracking-widest text-xs font-bold mb-2 text-red-400">Featured Presentation</span>
+          <span className="uppercase tracking-widest text-xs font-bold mb-2 text-red-400">{mediaHubContent.featuredPresentation}</span>
           <h2 className="text-3xl md:text-5xl font-display font-bold max-w-2xl mb-4">
-            AI in RAN: The Next Decade of Mobile Networks
+            {mediaHubContent.featuredTitle}
           </h2>
           <p className="max-w-lg opacity-80 hidden md:block">
-            A comprehensive look at how 5G and 6G will integrate AI agents for autonomous cell management and beamforming optimization.
+            {mediaHubContent.featuredSubtitle}
           </p>
         </div>
       </section>

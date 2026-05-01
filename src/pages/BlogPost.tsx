@@ -82,19 +82,59 @@ export default function BlogPost() {
             </div>
           </div>
 
-          <div className="mt-16 p-8 rounded-2xl bg-brand-blue/5 border border-brand-blue/10 flex flex-col md:flex-row items-center gap-6">
-            <div className="w-16 h-16 rounded-full bg-brand-blue flex items-center justify-center text-white shrink-0">
-               <UserPlaceholder />
-            </div>
-            <div className="text-center md:text-left">
-              <h3 className="text-lg font-bold mb-1">About Fitsum Mergia</h3>
-              <p className="text-slate-600 dark:text-slate-400 text-sm">
-                I'm a RAN Optimization Manager and tech enthusiast passionate about the intersection of Telecom and AI. Follow me for more insights.
-              </p>
-            </div>
-            <div className="shrink-0 flex gap-4">
-               <Link to="/about" className="px-4 py-2 bg-slate-900 dark:bg-white dark:text-slate-950 text-white rounded-lg text-sm font-bold">About Me</Link>
-            </div>
+          <div className="mt-16 p-8 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h3 className="text-lg font-bold mb-6">Leave a Comment</h3>
+            <form className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-colors"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-colors"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="comment" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  Comment *
+                </label>
+                <textarea
+                  id="comment"
+                  name="comment"
+                  required
+                  rows={5}
+                  className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-colors resize-vertical"
+                  placeholder="Share your thoughts about this article..."
+                />
+              </div>
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  className="px-6 py-3 bg-brand-blue text-white font-bold rounded-lg hover:bg-brand-blue/90 transition-colors focus:ring-2 focus:ring-brand-blue focus:ring-offset-2"
+                >
+                  Post Comment
+                </button>
+              </div>
+            </form>
           </div>
         </footer>
       </article>

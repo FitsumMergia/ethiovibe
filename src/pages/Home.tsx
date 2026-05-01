@@ -66,10 +66,8 @@ export default function Home() {
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
-                      target.parentElement!.classList.add('flex');
                     }}
                   />
-                  <User size={120} className="text-brand-blue/20 absolute" />
                </div>
                {/* Small floating tech icon */}
                <div className="absolute -bottom-2 -right-2 p-4 bg-white dark:bg-slate-800 rounded-full shadow-lg border border-slate-100 dark:border-white/10">

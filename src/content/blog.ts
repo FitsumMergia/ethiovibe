@@ -33,19 +33,21 @@ export const posts: Post[] = [
 
 ## 1. The big question: real intelligence or just a "smart sticker"?
 
-Telecom companies are currently excited about something called AI-RAN, which combines mobile networks (RAN) with artificial intelligence. On paper, it sounds like networks are becoming self-managing, almost like they can think for themselves.
+Telecom companies are currently excited about something called **AI-RAN**, which combines mobile networks (RAN) with artificial intelligence. On paper, it sounds like networks are becoming self-managing, almost like they can think for themselves.
 
-The official story—supported by industry groups and standards bodies like 3GPP—is that we’re entering an era of fully autonomous, highly efficient networks.
+The official story—supported by industry groups and standards bodies like 3GPP—is that we're entering an era of **fully autonomous, highly efficient networks**.
 
-But there’s a gap between the story and reality.
+But there's a gap between the story and reality.
 
-A useful way to think about it: imagine buying a “self-driving car” that still has a weak GPS signal, messy road maps, and broken sensors. You can add all the intelligence you want, but if the input data is unreliable, the car won’t behave safely or efficiently.
+A useful way to think about it: imagine buying a "self-driving car" that still has a weak GPS signal, messy road maps, and broken sensors. You can add all the intelligence you want, but if the input data is unreliable, the system won't behave safely or efficiently.
 
-That’s the concern here. Many telecom systems still suffer from messy data, disconnected tools, and siloed systems. So the key question is:
+That's the concern here. Many telecom systems still suffer from messy data, disconnected tools, and siloed systems. So the key question is:
 
-Are we truly building a new intelligent system from the ground up—or just adding AI on top of old problems?
+> Are we truly building a new intelligent system from the ground up—or just adding AI on top of old problems?
 
-## 1. The efficiency illusion: speeding up a broken machine
+---
+
+## 2. The efficiency illusion: speeding up a broken machine
 
 One of the biggest promises of AI in networks is better efficiency—things like adjusting signal power or managing congestion automatically in real time.
 

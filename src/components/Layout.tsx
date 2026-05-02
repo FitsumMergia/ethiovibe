@@ -171,7 +171,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div>
               © {new Date().getFullYear()} Fitsum Mergia. Built with React & Tailwind.
             </div>
-            <div className="flex gap-6">
+            <div className="flex gap-6 items-center">
+              <a href="tel:+251912345678" className="hover:text-brand-blue flex items-center gap-1">📞 +251 912 345 678</a>
+              <a href="mailto:fitsummergia@gmail.com" className="hover:text-brand-blue flex items-center gap-1">✉️ fitsummergia@gmail.com</a>
               <Link to="/rss" className="flex items-center gap-1 hover:text-brand-blue"><Rss size={14} /> RSS</Link>
               <a href="https://github.com/FitsumMergia" className="hover:text-brand-blue">GitHub</a>
               <a href="https://www.youtube.com/@EthioTechVibes" className="hover:text-brand-blue">YouTube</a>

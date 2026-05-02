@@ -1,12 +1,12 @@
 import React from 'react';
-import { Mail, Linkedin, Youtube, Github, Send, MessageSquare, MapPin, ExternalLink } from 'lucide-react';
+import { Mail, MessageSquare } from 'lucide-react';
 import { contactContent } from '@/content/pages';
 
 export default function Contact() {
   const [formStatus, setFormStatus] = React.useState<'idle' | 'sending' | 'sent'>('idle');
   const [selectedPhoto, setSelectedPhoto] = React.useState<File | null>(null);
   const [photoPreview, setPhotoPreview] = React.useState<string>('');
-
+  
   const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] ?? null;
     setSelectedPhoto(file);
@@ -21,19 +21,13 @@ export default function Contact() {
       setPhotoPreview('');
     }
   };
-
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('sending');
     setTimeout(() => setFormStatus('sent'), 1500);
   };
-
-  const socialLinks = [
-    { name: 'LinkedIn', icon: <Linkedin size={24} />, url: 'https://linkedin.com/in/fitsum-mergia-6588176a', color: 'text-blue-600', description: 'Professional networking and career history.' },
-    { name: 'YouTube', icon: <Youtube size={24} />, url: 'https://www.youtube.com/@EthioTechVibes', color: 'text-red-500', description: 'Technical tutorials and deep-dives.' },
-    { name: 'GitHub', icon: <Github size={24} />, url: 'https://github.com/FitsumMergia', color: 'text-slate-800 dark:text-white', description: 'Code snippets and automation scripts.' },
-  ];
-
+  
   return (
     <div className="space-y-16 animate-in fade-in duration-500">
       <header className="max-w-2xl">
@@ -107,68 +101,13 @@ export default function Contact() {
                 </div>
               )}
             </div>
-            <button 
-              disabled={formStatus !== 'idle'}
-              className="w-full py-4 bg-brand-blue text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 disabled:opacity-50 transition-all"
+            <a 
+              href={`mailto:${contactContent.directEmail}`}
+              className="w-full py-4 bg-brand-blue text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all no-underline text-center"
             >
-              {formStatus === 'idle' && (
-                <>Send Message <Send size={18} /></>
-              )}
-              {formStatus === 'sending' && (
-                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-              )}
-              {formStatus === 'sent' && (
-                <>
-                  {selectedPhoto ? 'Message Sent with Photo!' : 'Message Sent!'} <Send size={18} />
-                </>
-              )}
-            </button>
+              Contact via Email <Mail size={18} />
+            </a>
           </form>
-        </section>
-
-        {/* Socials & Info */}
-        <section className="space-y-12">
-          <div className="space-y-6">
-            <h2 className="text-xl font-bold flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center">
-                <MapPin size={20} />
-              </div>
-              {contactContent.connectTitle}
-            </h2>
-            <div className="grid grid-cols-1 gap-4">
-              {socialLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.url}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-4 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-all group"
-                >
-                  <div className={`p-3 rounded-xl bg-slate-100 dark:bg-slate-800 ${link.color} group-hover:scale-110 transition-transform`}>
-                    {link.icon}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-bold">{link.name}</span>
-                      <ExternalLink size={12} className="text-slate-400" />
-                    </div>
-                    <p className="text-sm text-slate-500">{link.description}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className="p-8 rounded-3xl bg-slate-900 text-white relative overflow-hidden">
-             <div className="relative z-10">
-               <h3 className="text-lg font-bold mb-2">{contactContent.directEmailTitle}</h3>
-               <p className="text-slate-400 text-sm mb-4">{contactContent.directEmailDescription}</p>
-               <a href={`mailto:${contactContent.directEmail}`} className="text-brand-cyan font-mono hover:underline">
-                 {contactContent.directEmail}
-               </a>
-             </div>
-             <Mail size={120} className="absolute -bottom-8 -right-8 text-white/5 rotate-12" />
-          </div>
         </section>
       </div>
     </div>

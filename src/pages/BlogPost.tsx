@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { posts } from '@/content/blog';
 import { formatDate } from '@/lib/utils';
 import { ChevronLeft, Calendar, Clock, Tag, Share2, Youtube, Linkedin, Twitter } from 'lucide-react';
@@ -38,8 +39,8 @@ export default function BlogPost() {
           </div>
         </header>
 
-        <div className="markdown-body prose prose-slate dark:prose-invert max-w-none prose-headings:font-display prose-a:text-brand-blue">
-          <ReactMarkdown>{post.content}</ReactMarkdown>
+        <div className="markdown-body prose prose-slate dark:prose-invert max-w-none prose-headings:font-display prose-a:text-brand-blue overflow-x-auto">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
         </div>
 
         <footer className="mt-16 pt-10 border-t border-slate-100 dark:border-slate-800">

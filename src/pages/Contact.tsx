@@ -1,26 +1,9 @@
 import React from 'react';
-import { Mail, Linkedin, Youtube, Github, Send, MessageSquare, MapPin, ExternalLink } from 'lucide-react';
+import { Mail, Linkedin, Youtube, Github, Send, MessageSquare, MapPin, ExternalLink, Phone } from 'lucide-react';
 import { contactContent } from '@/content/pages';
 
 export default function Contact() {
   const [formStatus, setFormStatus] = React.useState<'idle' | 'sending' | 'sent'>('idle');
-  const [selectedPhoto, setSelectedPhoto] = React.useState<File | null>(null);
-  const [photoPreview, setPhotoPreview] = React.useState<string>('');
-
-  const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0] ?? null;
-    setSelectedPhoto(file);
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setPhotoPreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setPhotoPreview('');
-    }
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,73 +26,76 @@ export default function Contact() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Contact Form */}
-        <section className="space-y-8">
-          <div className="flex items-center gap-3">
-             <div className="w-10 h-10 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
-                <MessageSquare size={20} />
-             </div>
-             <h2 className="text-xl font-bold">{contactContent.messageTitle}</h2>
+      <div className="flex flex-col items-center gap-10">
+        <div className="w-full max-w-4xl rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm p-8">
+          <div className="flex flex-col items-center text-center gap-3 mb-6">
+            <div className="w-12 h-12 rounded-2xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center">
+              <MapPin size={24} />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold">{contactContent.connectTitle}</h2>
+              <p className="text-slate-500 max-w-2xl mx-auto">{contactContent.directEmailDescription}</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-3xl border border-slate-100 dark:border-slate-800 p-6 bg-slate-50 dark:bg-slate-950 text-center">
+              <p className="text-xs uppercase tracking-widest text-slate-500 mb-2">Email</p>
+              <a href={`mailto:${contactContent.directEmail}`} className="font-semibold text-slate-900 dark:text-white hover:text-brand-blue">
+                {contactContent.directEmail}
+              </a>
+            </div>
+            <div className="rounded-3xl border border-slate-100 dark:border-slate-800 p-6 bg-slate-50 dark:bg-slate-950 text-center">
+              <p className="text-xs uppercase tracking-widest text-slate-500 mb-2">Phone</p>
+              <a href={`tel:${contactContent.directPhone}`} className="font-semibold text-slate-900 dark:text-white hover:text-brand-blue">
+                {contactContent.directPhone}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full max-w-4xl rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm p-8">
+          <div className="flex flex-col items-center text-center gap-3 mb-6">
+            <div className="w-12 h-12 rounded-2xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
+              <MessageSquare size={24} />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold">{contactContent.messageTitle}</h2>
+              <p className="text-slate-500 max-w-2xl mx-auto">Send a short message and I will get back to you soon.</p>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 pl-1">Name</label>
-                <input 
-                  required
-                  type="text" 
-                  placeholder="John Doe" 
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue transition-all"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 pl-1">Email</label>
-                <input 
-                  required
-                  type="email" 
-                  placeholder="john@example.com" 
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue transition-all"
-                />
-              </div>
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-widest text-slate-500 pl-1">Name</label>
+              <input 
+                required
+                type="text" 
+                placeholder="John Doe" 
+                className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-brand-blue transition-all"
+              />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-slate-500 pl-1">Subject</label>
-              <select className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue transition-all">
-                <option>Collaboration Inquiry</option>
-                <option>Speaking Engagement</option>
-                <option>Question about RAN Optimization</option>
-                <option>Other</option>
-              </select>
+              <label className="text-xs font-bold uppercase tracking-widest text-slate-500 pl-1">Email</label>
+              <input 
+                required
+                type="email" 
+                placeholder="john@example.com" 
+                className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-brand-blue transition-all"
+              />
             </div>
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-widest text-slate-500 pl-1">Message</label>
               <textarea 
                 required
                 rows={5}
-                placeholder="How can I help you?" 
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-blue transition-all resize-none"
+                placeholder="Tell me how we can collaborate..." 
+                className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-brand-blue transition-all resize-none"
               ></textarea>
-            </div>
-            <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-slate-500 pl-1">Upload Photo</label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handlePhotoChange}
-                className="w-full text-sm text-slate-700 file:mr-4 file:rounded-full file:border-0 file:bg-brand-blue file:px-4 file:py-2 file:text-white file:font-semibold file:transition-all hover:file:cursor-pointer hover:file:bg-brand-blue/90"
-              />
-              <p className="text-xs text-slate-500">Optional: add a photo to include with your request.</p>
-              {photoPreview && (
-                <div className="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 mt-3">
-                  <img src={photoPreview} alt="Selected upload preview" className="w-full h-60 object-cover" />
-                </div>
-              )}
             </div>
             <button 
               disabled={formStatus !== 'idle'}
-              className="w-full py-4 bg-brand-blue text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 disabled:opacity-50 transition-all"
+              className="w-full py-4 bg-brand-blue text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:opacity-90 disabled:opacity-50 transition-all"
             >
               {formStatus === 'idle' && (
                 <>Send Message <Send size={18} /></>
@@ -119,57 +105,52 @@ export default function Contact() {
               )}
               {formStatus === 'sent' && (
                 <>
-                  {selectedPhoto ? 'Message Sent with Photo!' : 'Message Sent!'} <Send size={18} />
+                  Message Sent! <Send size={18} />
                 </>
               )}
             </button>
           </form>
-        </section>
+        </div>
 
-        {/* Socials & Info */}
-        <section className="space-y-12">
-          <div className="space-y-6">
-            <h2 className="text-xl font-bold flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center">
-                <MapPin size={20} />
-              </div>
-              {contactContent.connectTitle}
-            </h2>
-            <div className="grid grid-cols-1 gap-4">
-              {socialLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.url}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-4 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-all group"
-                >
-                  <div className={`p-3 rounded-xl bg-slate-100 dark:bg-slate-800 ${link.color} group-hover:scale-110 transition-transform`}>
+        <div className="w-full max-w-4xl rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm p-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {socialLinks.map((link) => (
+              <a 
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between gap-4 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:bg-slate-100 dark:hover:bg-slate-900/80 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`p-3 rounded-2xl bg-white dark:bg-slate-900 ${link.color}`}>
                     {link.icon}
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-bold">{link.name}</span>
-                      <ExternalLink size={12} className="text-slate-400" />
-                    </div>
-                    <p className="text-sm text-slate-500">{link.description}</p>
-                  </div>
-                </a>
-              ))}
+                <div>
+                  <div className="font-semibold">{link.name}</div>
+                  <p className="text-sm text-slate-500">{link.description}</p>
+                </div>
+                </div>
+                <span className="inline-flex items-center rounded-full bg-brand-blue px-3 py-2 text-xs font-semibold text-white">
+                  Open
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="w-full max-w-4xl rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm p-8">
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-3xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
+              <Mail size={26} />
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-widest text-slate-500 mb-1">Let us connect</p>
+              <h3 className="text-2xl font-bold">Continue the conversation on RAN strategy, AI-driven optimization, and telecom transformation.</h3>
+              <p className="mt-3 text-slate-500 max-w-2xl">Use the form above, email directly, or click a link to share your idea and explore collaboration.</p>
             </div>
           </div>
-
-          <div className="p-8 rounded-3xl bg-slate-900 text-white relative overflow-hidden">
-             <div className="relative z-10">
-               <h3 className="text-lg font-bold mb-2">{contactContent.directEmailTitle}</h3>
-               <p className="text-slate-400 text-sm mb-4">{contactContent.directEmailDescription}</p>
-               <a href={`mailto:${contactContent.directEmail}`} className="text-brand-cyan font-mono hover:underline">
-                 {contactContent.directEmail}
-               </a>
-             </div>
-             <Mail size={120} className="absolute -bottom-8 -right-8 text-white/5 rotate-12" />
-          </div>
-        </section>
+        </div>
       </div>
     </div>
   );

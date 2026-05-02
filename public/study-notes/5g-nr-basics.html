@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5G NR Basics - Study Notes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .nav-links a {
+            color: #007acc;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #e3f2fd;
+        }
+        h1 {
+            color: #007acc;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #333;
+            border-left: 4px solid #007acc;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+        .highlight-box {
+            background: #e8f5e8;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #007acc;
+            color: white;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 20px;
+        }
+        .feature-title {
+            font-weight: bold;
+            color: #007acc;
+            margin-bottom: 10px;
+        }
+        .formula {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+        .spectrum-diagram {
+            background: #f0f8ff;
+            border: 1px solid #b0d4ff;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-links">
+            <a href="/study-notes/lte-frame-structure.html">← Previous: LTE Frame Structure</a>
+            <a href="/study-notes/ran-kpi-reference.html">Next: RAN KPI Reference →</a>
+        </div>
+
+        <div class="header">
+            <h1>5G NR Basics</h1>
+            <p>Fundamental concepts of 5G New Radio technology and architecture</p>
+        </div>
+
+        <h2>1. What is 5G NR?</h2>
+        <p>5G New Radio (NR) is the global standard for a unified, more capable 5G wireless air interface. It provides:</p>
+        <ul>
+            <li>Higher data rates (up to 20 Gbps)</li>
+            <li>Lower latency (< 1ms)</li>
+            <li>Massive connectivity (1 million devices/km²)</li>
+            <li>Enhanced reliability and security</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>Key Innovation:</strong> 5G NR uses flexible numerology and frame structure to support diverse use cases from enhanced mobile broadband (eMBB) to ultra-reliable low-latency communications (URLLC).
+        </div>
+
+        <h2>2. 5G NR vs LTE Comparison</h2>
+        <table class="comparison-table">
+            <tr>
+                <th>Feature</th>
+                <th>LTE</th>
+                <th>5G NR</th>
+            </tr>
+            <tr>
+                <td>Peak Data Rate</td>
+                <td>~1 Gbps</td>
+                <td>Up to 20 Gbps</td>
+            </tr>
+            <tr>
+                <td>Latency</td>
+                <td>~10-20 ms</td>
+                <td>< 1 ms</td>
+            </tr>
+            <tr>
+                <td>Subcarrier Spacing</td>
+                <td>15 kHz</td>
+                <td>15, 30, 60, 120 kHz</td>
+            </tr>
+            <tr>
+                <td>Frame Structure</td>
+                <td>Fixed 10ms frames</td>
+                <td>Flexible numerology</td>
+            </tr>
+            <tr>
+                <td>Bandwidth</td>
+                <td>Up to 20 MHz</td>
+                <td>Up to 400 MHz</td>
+            </tr>
+            <tr>
+                <td>MIMO</td>
+                <td>Up to 8x8</td>
+                <td>Massive MIMO (64x64+)</td>
+            </tr>
+        </table>
+
+        <h2>3. Frequency Ranges (Spectrum)</h2>
+        <div class="spectrum-diagram">
+            <h3>5G NR Operating Bands</h3>
+            <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+                <div>
+                    <strong>FR1 (Sub-6 GHz)</strong><br>
+                    410 MHz - 7.125 GHz<br>
+                    <em>Wider coverage, building penetration</em>
+                </div>
+                <div>
+                    <strong>FR2 (mmWave)</strong><br>
+                    24.25 GHz - 52.6 GHz<br>
+                    <em>Higher capacity, shorter range</em>
+                </div>
+            </div>
+        </div>
+
+        <h2>4. Numerology and Frame Structure</h2>
+        <div class="formula">
+            Subcarrier Spacing = 15 × 2^μ kHz<br>
+            (where μ = 0, 1, 2, 3, 4)
+        </div>
+
+        <div class="feature-list">
+            <div class="feature-card">
+                <div class="feature-title">μ = 0 (15 kHz)</div>
+                <p>eMBB applications, wide coverage, LTE compatibility</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">μ = 1 (30 kHz)</div>
+                <p>Balanced performance for various use cases</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">μ = 2 (60 kHz)</div>
+                <p>Low latency applications, URLLC</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">μ = 3 (120 kHz)</div>
+                <p>High-frequency mmWave bands</p>
+            </div>
+        </div>
+
+        <h2>5. Key Technologies</h2>
+        <h3>5G NR Core Technologies:</h3>
+        <ul>
+            <li><strong>OFDM:</strong> Orthogonal Frequency Division Multiplexing for efficient spectrum use</li>
+            <li><strong>Massive MIMO:</strong> Multiple antenna arrays for beamforming and spatial multiplexing</li>
+            <li><strong>Beamforming:</strong> Directional signal transmission for improved coverage and capacity</li>
+            <li><strong>Network Slicing:</strong> Virtual network segments for different service requirements</li>
+            <li><strong>Carrier Aggregation:</strong> Combining multiple frequency bands for higher throughput</li>
+        </ul>
+
+        <h2>6. Use Cases and Service Types</h2>
+        <div class="feature-list">
+            <div class="feature-card">
+                <div class="feature-title">eMBB (Enhanced Mobile Broadband)</div>
+                <p>High data rate applications: 4K/8K video streaming, AR/VR, high-speed internet</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">URLLC (Ultra-Reliable Low Latency)</div>
+                <p>Mission-critical applications: autonomous vehicles, remote surgery, industrial automation</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">mMTC (Massive Machine Type Communications)</div>
+                <p>IoT applications: smart cities, agriculture, asset tracking</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Study Notes by Fitsum Mergia | <a href="/resources">Back to Resources</a></p>
+        </div>
+    </div>
+</body>
+</html>

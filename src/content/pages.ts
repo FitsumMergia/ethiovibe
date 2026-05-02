@@ -9,23 +9,53 @@ export const homeContent = {
 
 export const aboutContent = {
   pageTitle: 'About Me',
+  headerDescription: 'I am Fitsum Mergia, a telecommunications professional with over 15 years of experience dedicated to the optimization and strategic evolution of Radio Access Networks (RAN). My journey in this field has been driven by a consistent commitment to learning and a desire to contribute to the growth of high-performance mobile connectivity.',
   introParagraphs: [
-    'Hello! I’m Fitsum Mergia, a telecommunications professional with over 8 years of experience in Radio Access Network (RAN) optimization. My journey began with a curiosity about how millions of devices connect seamlessly across the globe.',
-    'Today, my focus is on the next frontier: AI-driven network operations. As networks become more virtualized (O-RAN) and complex (5G NR), I believe that the traditional manual approach to network management must evolve into autonomous, self-healing systems.',
-    'Beyond my corporate role, I am deeply committed to technology education. Through my platform, EthioTechVibes, I empower engineers across Africa and beyond with technical skills in telecom, productivity, and automation.',
+    'In my current role as a RAN Optimization Manager at Ethio Telecom, I have the privilege of leading a dedicated work unit focused on the end-to-end performance of our access network. I strive to balance technical rigor with a focus on team productivity and personal efficiency.',
+  ],
+  sections: [
+    {
+      title: 'Leadership & Operational Experience',
+      items: [
+        'Technical & Group Leadership: I lead cross-functional teams to maintain and enhance network KPIs across GSM, UMTS, LTE, and 5G NR technologies.',
+        'Strategic Initiatives: I coordinate essential lifecycle projects, including Technology Sunsetting and Spectrum Refarming, to help modernize our infrastructure and improve spectral efficiency.',
+        'Productivity through Automation: To better manage data-driven decisions, I have developed a personal interest in using Python, Power BI, and Office Scripts to automate routine reporting and improve workflow accuracy.',
+        'Collaboration: I value the opportunity to work alongside international vendors and internal stakeholders to ensure our network goals align with broader organizational and regulatory standards.',
+      ]
+    },
+    {
+      title: 'Thought Leadership: Future Network Adoption',
+      items: [
+        'Emerging Trends: I am currently exploring the potential of AI-driven RAN and O-RAN principles to understand how they might eventually enhance vendor diversity and network flexibility.',
+        'Ongoing Research: I make it a priority to track global technological trends, offering a strategic perspective on the long-term move toward autonomous and self-healing network capabilities.',
+      ]
+    },
+    {
+      title: 'Training & Mentorship',
+      items: [
+        'Facilitation: As a certified facilitator for the Telecom Excellence Academy, I have the opportunity to deliver training modules on Mobile QoS/QoE management and optimization tools.',
+        'Community Engagement: Through my platform, EthioTechVibes, I share insights on telecom architecture and personal productivity, hoping to provide value to fellow engineers.',
+        'Supporting Others: I am committed to mentoring junior colleagues, fostering a collaborative environment where we can bridge the gap between established systems and modern technical demands.',
+      ]
+    }
   ],
   featuredName: 'Fitsum Mergia',
-  featuredTitle: 'RF Expert & Content Creator',
+  featuredTitle: 'RAN Optimization Manager & Telecom Strategist',
+  education: [
+    { degree: 'M.Sc. in Communication Engineering', institution: 'Addis Ababa University' },
+    { degree: 'B.Sc. in Electrical Engineering', institution: 'Jimma University' }
+  ]
 };
 
 export const contactContent = {
   pageTitle: 'Contact',
-  description: 'Have a question about RAN optimization? Want to collaborate on an AI project or have me speak at your event? Let’s connect.',
+  description: 'Interested in discussing RAN strategy, network evolution, AI-driven optimization, or the future of telecom networks? I welcome opportunities for technical collaboration, knowledge exchange, industry discussions, and speaking engagements. Whether you are exploring modern network transformation, operational strategy, performance optimization, or emerging telecom technologies, feel free to connect. Let’s exchange ideas, share insights, and contribute to advancing the industry together.',
   messageTitle: 'Send a Message',
-  connectTitle: 'Connect Online',
-  directEmailTitle: 'Direct Email',
-  directEmailDescription: 'For urgent inquiries, reach out directly:',
+  connectTitle: 'Let’s Connect',
+  directEmailTitle: 'Personal Contact',
+  directEmailDescription: 'Email or call for direct collaboration and industry discussions.',
   directEmail: 'fitsummergia@gmail.com',
+  directPhone: '+251911716114',
 };
 
 export const blogPageContent = {

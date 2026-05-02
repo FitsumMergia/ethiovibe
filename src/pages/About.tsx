@@ -7,22 +7,34 @@ export default function About() {
   const experiences = [
     {
       title: 'RAN Optimization Manager',
-      company: 'Leading Telecom Operator',
-      period: '2020 - Present',
-      description: 'Overseeing network performance across multiple regions, implementing 5G NR clusters, and leading a team of optimization specialists.'
+      company: 'Ethio Telecom',
+      period: '2019 – Present',
+      description: 'Leading end-to-end performance and strategic evolution of the access network, with a focus on KPI excellence across GSM, UMTS, LTE, and 5G NR technologies.'
     },
     {
-      title: 'RF Planning Lead',
-      company: 'International Infrastructure Ltd',
-      period: '2016 - 2020',
-      description: 'Designed and optimized nationwide LTE rollouts, managing cell site selection and interference mitigation strategies.'
+      title: 'Wireless Optimization Supervisor',
+      company: 'Ethio Telecom',
+      period: '2014 – 2019',
+      description: 'Supervised wireless optimization teams and supported large-scale LTE deployments, including performance tuning and cross-vendor coordination.'
+    },
+    {
+      title: 'RAN Optimization Engineer',
+      company: 'Ethio Telecom',
+      period: '2010 – 2014',
+      description: 'Executed radio access optimization and troubleshooting across multi-vendor networks while improving network quality and stability.'
+    },
+    {
+      title: 'Rollout Engineer',
+      company: 'ETC',
+      period: '2008 – 2010',
+      description: 'Supported network rollout activities, site commissioning, and RF planning for early-generation mobile infrastructure.'
     }
   ];
 
   const skills = [
-    { category: 'Telecom', items: ['GSM/LTE/5G NR', 'RAN Optimization', 'Handover Management', 'SON Implementation', 'KPI Analysis'] },
-    { category: 'Tech & AI', items: ['Python for Data Analysis', 'Power BI Dashboards', 'Machine Learning in RAN', 'Big Data Engineering'] },
-    { category: 'Soft Skills', items: ['Technical Leadership', 'Strategic Planning', 'Educational Content Creation', 'Public Speaking'] }
+    { category: 'Strategic Expertise', items: ['Technology Sunset Strategies', 'Spectrum Management & Refarming', 'AI & O-RAN Adoption Strategy', 'Future-Proofing Infrastructure', 'Strategic Vendor Management'] },
+    { category: 'Technical Proficiency', items: ['Multi-Vendor RAN (Huawei, ZTE)', '5G NR / LTE-A / UMTS / GSM', 'QoS/QoE Ecosystems', 'Python, Power BI & Automation'] },
+    { category: 'Leadership & Productivity', items: ['Group & Technical Leadership', 'Personal & Team Productivity', 'Public Speaking & Facilitation', 'Training & Mentorship'] }
   ];
 
   return (
@@ -30,7 +42,7 @@ export default function About() {
       <header className="max-w-3xl">
         <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">{aboutContent.pageTitle}</h1>
         <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-          I bridge the gap between complex telecommunications infrastructure and modern artificial intelligence to build smarter, more efficient mobile networks.
+          {aboutContent.headerDescription}
         </p>
       </header>
 
@@ -41,24 +53,29 @@ export default function About() {
               {paragraph}
             </p>
           ))}
+
+          {aboutContent.sections?.map((section) => (
+            <div key={section.title} className="space-y-3 pt-4">
+              <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{section.title}</h2>
+              <ul className="list-disc pl-5 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                {section.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
         
-        <div className="relative rounded-3xl overflow-hidden aspect-square md:aspect-auto md:h-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 group shadow-xl flex items-center justify-center">
+        <div className="rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl flex items-center justify-center min-h-[420px]">
           <img 
-            src="/Fitsum_photo.png" 
+            src="Fitsum_photo.png" 
             alt="Fitsum Mergia" 
-            className="w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700"
+            className="max-h-full max-w-full object-contain"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.style.display = 'none';
             }}
           />
-          <User size={120} className="text-slate-300 dark:text-slate-800" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent pointer-events-none" />
-          <div className="absolute bottom-6 left-6 text-white z-10">
-            <p className="font-display font-bold text-xl">{aboutContent.featuredName}</p>
-            <p className="text-xs opacity-80 uppercase tracking-widest font-bold">{aboutContent.featuredTitle}</p>
-          </div>
         </div>
       </section>
 
@@ -112,20 +129,18 @@ export default function About() {
         </div>
       </section>
 
-      {/* Philosophy */}
-      <section className="p-8 md:p-12 rounded-3xl bg-slate-900 text-white overflow-hidden relative">
-        <div className="relative z-10 text-center max-w-2xl mx-auto">
-          <Globe className="mx-auto mb-6 text-brand-cyan" size={40} />
-          <h2 className="text-2xl md:text-3xl font-display font-medium italic mb-8">
-            "My mission is to decouple technical excellence from accessibility. The world's connectivity depends on shared knowledge."
-          </h2>
-          <div className="flex flex-col items-center">
-            <div className="w-12 h-0.5 bg-brand-blue mb-4" />
-            <p className="text-sm uppercase tracking-widest font-bold">Personal Vision</p>
-          </div>
-        </div>
-        <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
-          <Code size={200} />
+      {/* Education */}
+      <section>
+        <h2 className="text-2xl font-bold mb-8 flex items-center gap-2">
+          <GraduationCap className="text-brand-blue" size={24} /> Education
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {aboutContent.education?.map((row) => (
+            <div key={`${row.degree}-${row.institution}`} className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
+              <p className="font-semibold text-slate-900 dark:text-white">{row.degree}</p>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-2">{row.institution}</p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

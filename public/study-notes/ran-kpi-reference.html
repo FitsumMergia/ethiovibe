@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAN KPI Reference Guide - Study Notes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .nav-links a {
+            color: #007acc;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #e3f2fd;
+        }
+        h1 {
+            color: #007acc;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #333;
+            border-left: 4px solid #007acc;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .kpi-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .kpi-name {
+            font-weight: bold;
+            color: #007acc;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .kpi-formula {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+        .kpi-target {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .kpi-description {
+            color: #666;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007acc;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .category-header {
+            background: #e3f2fd;
+            padding: 10px;
+            margin: 20px 0 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #007acc;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-links">
+            <a href="/study-notes/5g-nr-basics.html">← Previous: 5G NR Basics</a>
+            <a href="/study-notes/lte-frame-structure.html">Next: LTE Frame Structure →</a>
+        </div>
+
+        <div class="header">
+            <h1>RAN KPI Reference Guide</h1>
+            <p>Comprehensive reference for Radio Access Network performance indicators</p>
+        </div>
+
+        <h2>1. Accessibility KPIs</h2>
+        <div class="category-header">Measuring network availability and connection success rates</div>
+
+        <div class="kpi-card">
+            <div class="kpi-name">RRC Setup Success Rate (RRC SSR)</div>
+            <div class="kpi-formula">
+                RRC SSR = (RRC Setup Complete) / (RRC Setup Attempts) × 100%
+            </div>
+            <div class="kpi-target">Target: > 98%</div>
+            <div class="kpi-description">Measures the success rate of RRC connection establishments. Critical for user experience.</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-name">E-RAB Setup Success Rate (E-RAB SSR)</div>
+            <div class="kpi-formula">
+                E-RAB SSR = (E-RAB Setup Success) / (E-RAB Setup Attempts) × 100%
+            </div>
+            <div class="kpi-target">Target: > 97%</div>
+            <div class="kpi-description">Success rate of bearer establishment after RRC connection.</div>
+        </div>
+
+        <h2>2. Retainability KPIs</h2>
+        <div class="category-header">Measuring call drop rates and connection stability</div>
+
+        <div class="kpi-card">
+            <div class="kpi-name">Call Drop Rate (CDR)</div>
+            <div class="kpi-formula">
+                CDR = (Abnormal Releases) / (Total Calls) × 100%
+            </div>
+            <div class="kpi-target">Target: < 2%</div>
+            <div class="kpi-description">Percentage of calls that drop unexpectedly during conversation.</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-name">Handover Success Rate (HOSR)</div>
+            <div class="kpi-formula">
+                HOSR = (Successful Handovers) / (Handover Attempts) × 100%
+            </div>
+            <div class="kpi-target">Target: > 98%</div>
+            <div class="kpi-description">Success rate of handovers between cells during mobility.</div>
+        </div>
+
+        <h2>3. Mobility KPIs</h2>
+        <div class="category-header">Measuring handover performance and mobility management</div>
+
+        <div class="kpi-card">
+            <div class="kpi-name">Intra-LTE Handover Success Rate</div>
+            <div class="kpi-formula">
+                Intra-LTE HOSR = (Successful Intra-LTE HO) / (Intra-LTE HO Attempts) × 100%
+            </div>
+            <div class="kpi-target">Target: > 98%</div>
+            <div class="kpi-description">Success rate of handovers within the LTE network.</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-name">Inter-RAT Handover Success Rate</div>
+            <div class="kpi-formula">
+                IRAT HOSR = (Successful IRAT HO) / (IRAT HO Attempts) × 100%
+            </div>
+            <div class="kpi-target">Target: > 95%</div>
+            <div class="kpi-description">Success rate of handovers between different radio access technologies.</div>
+        </div>
+
+        <h2>4. Throughput KPIs</h2>
+        <div class="category-header">Measuring data transfer performance</div>
+
+        <div class="kpi-card">
+            <div class="kpi-name">Average User Throughput</div>
+            <div class="kpi-formula">
+                Avg Throughput = Total Data Volume / Total Connection Time
+            </div>
+            <div class="kpi-target">Target: Varies by bandwidth</div>
+            <div class="kpi-description">Average data rate experienced by users during active connections.</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-name">Cell Throughput</div>
+            <div class="kpi-formula">
+                Cell Throughput = Total Cell Data Volume / Measurement Period
+            </div>
+            <div class="kpi-target">Target: Based on cell capacity</div>
+            <div class="kpi-description">Total data throughput handled by a cell over time.</div>
+        </div>
+
+        <h2>5. Coverage KPIs</h2>
+        <div class="category-header">Measuring network coverage and signal quality</div>
+
+        <table>
+            <tr>
+                <th>KPI Name</th>
+                <th>Formula</th>
+                <th>Target</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Reference Signal Received Power (RSRP)</td>
+                <td>Average RSRP measurement</td>
+                <td>> -100 dBm</td>
+                <td>Signal strength indicator</td>
+            </tr>
+            <tr>
+                <td>Reference Signal Received Quality (RSRQ)</td>
+                <td>Average RSRQ measurement</td>
+                <td>> -10 dB</td>
+                <td>Signal quality indicator</td>
+            </tr>
+            <tr>
+                <td>Signal-to-Interference-plus-Noise Ratio (SINR)</td>
+                <td>Average SINR measurement</td>
+                <td>> 10 dB</td>
+                <td>Signal quality relative to interference</td>
+            </tr>
+        </table>
+
+        <h2>6. Capacity KPIs</h2>
+        <div class="category-header">Measuring network utilization and capacity</div>
+
+        <div class="kpi-card">
+            <div class="kpi-name">Cell Load</div>
+            <div class="kpi-formula">
+                Cell Load = (Used PRB) / (Total PRB) × 100%
+            </div>
+            <div class="kpi-target">Target: < 80%</div>
+            <div class="kpi-description">Percentage of Physical Resource Blocks utilized in the cell.</div>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-name">User Count per Cell</div>
+            <div class="kpi-formula">
+                Average Connected Users = Total Connected Users / Number of Cells
+            </div>
+            <div class="kpi-target">Target: Based on cell capacity</div>
+            <div class="kpi-description">Average number of simultaneously connected users per cell.</div>
+        </div>
+
+        <div class="footer">
+            <p>Study Notes by Fitsum Mergia | <a href="/resources">Back to Resources</a></p>
+        </div>
+    </div>
+</body>
+</html>

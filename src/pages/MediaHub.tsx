@@ -7,6 +7,7 @@ export default function MediaHub() {
   const [selectedCategory, setSelectedCategory] = React.useState('All');
   
   const categories = ['All', '5G Education', 'Tutorial', 'Productivity', 'Industry Insights'];
+  const featuredVideo = videoResources[0];
 
   return (
     <div className="space-y-12 animate-in fade-in duration-500">
@@ -29,15 +30,27 @@ export default function MediaHub() {
 
       {/* Featured Video */}
       <section className="relative aspect-video rounded-3xl overflow-hidden group border border-slate-200 dark:border-slate-800 shadow-2xl">
-        <img 
-          src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" 
-          alt="Featured Video"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-50"
-        />
+        <a
+          href={`https://www.youtube.com/watch?v=${featuredVideo.youtubeId}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0"
+        >
+          <img 
+            src={featuredVideo.thumbnail}
+            alt="Featured Video"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-50"
+          />
+        </a>
         <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center text-white">
-          <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-red-600 transition-all cursor-pointer">
+          <a
+            href={`https://www.youtube.com/watch?v=${featuredVideo.youtubeId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-red-600 transition-all"
+          >
             <Play size={32} fill="currentColor" strokeWidth={0} />
-          </div>
+          </a>
           <span className="uppercase tracking-widest text-xs font-bold mb-2 text-red-400">{mediaHubContent.featuredPresentation}</span>
           <h2 className="text-3xl md:text-5xl font-display font-bold max-w-2xl mb-4">
             {mediaHubContent.featuredTitle}
